@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -46,7 +46,7 @@ interface PlanData {
   days: DayPlan[];
 }
 
-export default function PlanResultPage() {
+function PlanResultContent() {
   const searchParams = useSearchParams();
   const [planData, setPlanData] = useState<PlanData | null>(null);
   const [copied, setCopied] = useState(false);
@@ -315,6 +315,27 @@ export default function PlanResultPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function PlanResultPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="container py-8 max-w-4xl">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="text-center space-y-2">
+                <Loader2 className="h-6 w-6 animate-spin mx-auto text-muted-foreground" />
+                <p className="text-muted-foreground">결과를 불러오는 중...</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      }
+    >
+      <PlanResultContent />
+    </Suspense>
   );
 }
 
