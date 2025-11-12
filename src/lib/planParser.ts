@@ -1,5 +1,5 @@
 import { format, addDays, parseISO } from 'date-fns';
-import { ko } from 'date-fns/locale';
+import { ko } from 'date-fns/locale/ko';
 
 export interface DayPlan {
   date: string;

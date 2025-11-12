@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Copy, X, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
-import { ko } from 'date-fns/locale';
+import { ko } from 'date-fns/locale/ko';
 
 interface DayItem {
   time: string;
