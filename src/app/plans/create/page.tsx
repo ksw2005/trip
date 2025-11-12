@@ -22,7 +22,6 @@ export default function CreatePlanPage() {
     setLoading(true);
     setError(null);
     setResult(null);
-    setPlanId(null);
 
     try {
       const payload = {
